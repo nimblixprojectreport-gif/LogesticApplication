@@ -1,22 +1,15 @@
 # tenants/constants.py
 
-class TenantSettingKeys:
-    # Branding Settings
-    LOGO_URL = "logo_url"
-    PRIMARY_COLOR = "primary_color"
-    COMPANY_ADDRESS = "company_address"
+TENANT_SETTING_CHOICES=[
+     ('logo_url', 'LOGO_URL' ),
+     ('primary_color',' PRIMARY_COLOR'),
+     ('company_address','COMPANY_ADDRESS '),
     
     # Shipment & Delivery Rules
-    MAX_DELIVERY_ATTEMPTS = "max_delivery_attempts"  # Ref: 
-    ALLOW_CANCELLATION_AFTER_PICKUP = "allow_cancel_after_pickup"
-    DEFAULT_CURRENCY = "default_currency"
-    
+     ('max_delivery_attempts','MAX_DELIVERY_ATTEMPTS '),
+     ('allow_cancel_after_pickup','ALLOW_CANCELLATION_AFTER_PICKUP '),
+     ('default_currency','DEFAULT_CURRENCY '),    
     # Financial Rules
-    MIN_PAYOUT_THRESHOLD = "min_payout_threshold"  # Ref: [cite: 169]
+      ('min_payout_threshold','MIN_PAYOUT_THRESHOLD'),  
 
-    @classmethod
-    def choices(cls):
-        return [
-            (value, key) for key, value in cls.__dict__.items() 
-            if not key.startswith("__") and not callable(value)
-        ]
+]

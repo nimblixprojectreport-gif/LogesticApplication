@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
 from core.models import TimeStampedModel
-from tenants.models import Tenant
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -21,7 +20,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
+    tenant = models.ForeignKey('tenants.Tenant', on_delete=models.CASCADE, null=True, blank=True)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20, null=True, blank=True)
     is_active = models.BooleanField(default=True)
@@ -38,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 
 
 class Role(models.Model):
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, blank=True)
+    tenant = models.ForeignKey('tenants.Tenant', on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 

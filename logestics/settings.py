@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'payments',
     'tenants',
     'tracking',
-    'wabhooks',
+    'wallet',
 ]
 
 MIDDLEWARE = [
