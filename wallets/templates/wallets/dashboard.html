@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="30" />
+    <title>Wallet Dashboard</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 40px;
+      }
+
+      .card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 6px 12px;
+      }
+
+      input {
+        padding: 6px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Wallet Dashboard</h1>
+
+    <div class="card">
+      <h3>Current Balance:</h3>
+      <h2>₹ {{ wallet.balance }}</h2>
+    </div>
+
+    <div class="card">
+      <h3>Top Up</h3>
+      <form method="post" action="{% url 'topup-html' %}">
+        {% csrf_token %}
+        <input type="number" name="amount" step="0.01" required />
+        <button type="submit">Add Money</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Withdraw</h3>
+      <form method="post" action="{% url 'withdraw-html' %}">
+        {% csrf_token %}
+        <input type="number" name="amount" step="0.01" required />
+        <button type="submit">Request Withdraw</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Transaction History</h3>
+      <table>
+        <tr>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+        {% for txn in transactions %}
+        <tr>
+          <td>{{ txn.transaction_type }}</td>
+          <td>₹ {{ txn.amount }}</td>
+          <td>{{ txn.status }}</td>
+          <td>{{ txn.created_at }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
