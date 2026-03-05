@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <h2>Vehicle List</h2>
+
+    <a href="{% url 'vehicle_create' %}">
+        <button class="btn-green">Add Vehicle</button>
+    </a>
+
+    <br><br>
+
+    <table>
+        <tr>
+            <th>Owner Name</th>
+            <th>Vehicle Number</th>
+            <th>Vehicle Type</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for vehicle in vehicles %}
+        <tr>
+            <td>{{ vehicle.name }}</td>
+            <td>{{ vehicle.number }}</td>
+            <td>{{ vehicle.type }}</td>
+            <td>
+                <a href="{% url 'vehicle_update' vehicle.id %}">
+                    <button class="btn-green">Edit</button>
+                </a>
+
+                <a href="{% url 'vehicle_delete' vehicle.id %}">
+                    <button class="btn-red">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

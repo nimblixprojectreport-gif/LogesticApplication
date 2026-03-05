@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Webhook Management</h1>
+
+<div class="card">
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Webhook URL</label>
+        <input type="text" name="url" placeholder="https://clientapp.com/hook">
+
+        <label>Select Event</label>
+        <select name="event">
+            <option value="shipment_status_changed">Shipment Status Changed</option>
+            <option value="payment_updated">Payment Updated</option>
+            <option value="payout_processed">Payout Processed</option>
+        </select>
+
+        <button class="btn-green" type="submit">Register Webhook</button>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Registered Webhooks</h3>
+
+    <table>
+        <tr>
+            <th>Webhook URL</th>
+            <th>Event</th>
+            <th>Action</th>
+        </tr>
+
+        {% for webhook in webhooks %}
+        <tr>
+            <td>{{ webhook.url }}</td>
+            <td>{{ webhook.event }}</td>
+            <td>
+                <a href="{% url 'webhook_delete' webhook.id %}">
+                    <button class="btn-red">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
