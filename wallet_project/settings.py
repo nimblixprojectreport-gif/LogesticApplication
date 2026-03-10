@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'wallets',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -25,6 +26,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'wallet_project.urls'
@@ -55,6 +57,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
