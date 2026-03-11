@@ -21,5 +21,4 @@ Updated At: {latest_log.timestamp}
             return f"Shipment {shipment.tracking_number} status: {shipment.status}"
 
     except Shipment.DoesNotExist:
-
         return "Shipment not found. Please check tracking number."

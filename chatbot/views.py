@@ -41,3 +41,6 @@ def chatbot_api(request):
         "intent": intent,
         "response": response
     })
+    
+    
+    

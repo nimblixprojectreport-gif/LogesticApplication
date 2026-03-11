@@ -13,7 +13,6 @@ Phone: {driver.user.phone}
 License: {driver.license_number}
 Rating: {driver.rating}
 """
-
     except DriverProfile.DoesNotExist:
 
         return "Driver not found."

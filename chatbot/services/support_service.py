@@ -8,5 +8,4 @@ def report_issue(issue):
 
     elif issue == "wrong_address":
         return "Please update your address in shipment details."
-
     return "Issue recorded."

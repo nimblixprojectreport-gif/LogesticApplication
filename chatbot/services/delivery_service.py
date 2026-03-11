@@ -15,7 +15,6 @@ def get_delivery_time(tracking_number):
 
         elif shipment.status == "In Transit":
             return "Your package is in transit and will arrive soon."
-
         return f"Current status: {shipment.status}"
 
     except Shipment.DoesNotExist:
