@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 
     #third-party
     'auth_system',
@@ -45,11 +46,14 @@ INSTALLED_APPS = [
     'drivers',
     'shipments',
     'earnings',
+    'parcelmanagement',
+    'shipment',
     'notifications',
     'webhooks',
     'payments',
     'tenants',
     'tracking',
+
     'chatbot',
     'rest_framework',
 ]
@@ -132,3 +136,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_URL = '/admin/login/'
