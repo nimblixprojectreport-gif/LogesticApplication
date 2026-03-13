@@ -31,7 +31,7 @@ urlpatterns = [
     # Future modules (currently commented)
     # path('api/drivers/', include('drivers.urls')),
     # path('api/auth/', include('auth_system.urls')),
-    # path('api/earnings/', include('earnings.urls')),
+    path('api/earnings/', include('earnings.urls')),
     # path('api/tracking/', include('tracking.urls')),
     # path('api/parcelmanagement/', include('parcelmanagement.urls')),
     # path('api/logestics/', include('shipment.urls')),

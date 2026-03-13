@@ -1,6 +1,9 @@
 from django.views import View
 from django.http import JsonResponse
 from .models import DriverEarning, Payout
+from django.db.models import Sum
+from django.utils import timezone
+from django.views import View
 
 # List all earnings
 class EarningsListView(View):
@@ -46,3 +49,32 @@ class PayoutProcessView(View):
         pending_payouts = Payout.objects.filter(payout_status='PENDING')
         updated_count = pending_payouts.update(payout_status='PROCESSING')
         return JsonResponse({'message': f'{updated_count} payouts set to PROCESSING'})
+
+# Particular driver with particular day earnings
+class DriverDailyEarningsView(View):
+    def get(self, request, driver_id):
+        today = timezone.now().date()
+        
+        earnings = DriverEarning.objects.filter(
+            driver_id = driver_id,
+            created_at__date = today
+        )
+        
+        total_earnings = earnings.aggregate(
+            total = Sum('earning_amount')
+        )['total'] or 0
+        
+        total_commission = earnings.aggregate(
+            total = Sum('commission_amount')
+        )['total'] or 0
+        
+        data = {
+            "driver_id": driver_id,
+            "date": str(today),
+            "total_shipments": earnings.count(),
+            "total_earnings": float(total_earnings),
+            "total_commission": float(total_commission),
+            "net_income": float(total_earnings - total_commission)
+        }
+        
+        return JsonResponse(data)

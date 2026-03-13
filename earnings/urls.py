@@ -7,4 +7,8 @@ urlpatterns = [
     path('payouts/', views.PayoutListView.as_view(), name='payout-list'),  # /api/earnings/payouts/
     path('payouts/<int:id>/', views.PayoutDetailView.as_view(), name='payout-detail'),  # /api/earnings/payouts/1/
     path('payouts/process/', views.PayoutProcessView.as_view(), name='payout-process'),  # /api/earnings/payouts/process/
+    
+    # Driver today earnings
+    path('drivers/<int:driver_id>/today/', views.DriverDailyEarningsView.as_view(), name='driver-today-earnings'),
+    # /api/earnings/drivers/1/today/
 ]
