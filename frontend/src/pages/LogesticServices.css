@@ -1,0 +1,392 @@
+/* ─── Reset ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Root ─────────────────────────────────────────── */
+.ls-root {
+  min-height: 100vh;
+  background-color: #0d1117;
+  color: #e6edf3;
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ─── Header ────────────────────────────────────────── */
+.ls-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background-color: #0d1117;
+  border-bottom: 1px solid #21262d;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.ls-menu-btn,
+.ls-profile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.ls-menu-icon {
+  font-size: 22px;
+  color: #e6edf3;
+  line-height: 1;
+}
+
+.ls-header-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+/* ─── Main ──────────────────────────────────────────── */
+.ls-main {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 90px;
+  width: 100%;
+}
+
+/* ─── Hero ──────────────────────────────────────────── */
+.ls-hero-section {
+  padding: 24px 20px 12px;
+  max-width: 700px;
+}
+
+.ls-hero-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #e6edf3;
+  margin: 0 0 6px;
+  letter-spacing: -0.3px;
+}
+
+.ls-hero-subtitle {
+  font-size: 14px;
+  color: #8b949e;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ─── Card List ─────────────────────────────────────── */
+/* Always single column — no grid at any breakpoint */
+.ls-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 16px 0;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* ─── Card ──────────────────────────────────────────── */
+.ls-card {
+  background-color: #161b22;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #21262d;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ls-card--hovered {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.18);
+  border-color: #3b82f6;
+}
+
+/* ─── Card Image ────────────────────────────────────── */
+.ls-card-image-wrap {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background-color: #1c2128;
+  flex-shrink: 0;
+}
+
+.ls-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.ls-card--hovered .ls-card-image {
+  transform: scale(1.04);
+}
+
+.ls-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, #161b22);
+}
+
+/* ─── Card Body ─────────────────────────────────────── */
+.ls-card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ls-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ls-service-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.ls-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ls-card-desc {
+  font-size: 13px;
+  color: #8b949e;
+  line-height: 1.55;
+  margin: 0 0 12px;
+  flex: 1;
+}
+
+/* ─── Tags ──────────────────────────────────────────── */
+.ls-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.ls-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  border-radius: 20px;
+  padding: 3px 10px;
+  background-color: transparent;
+  white-space: nowrap;
+}
+
+/* ─── Divider ───────────────────────────────────────── */
+.ls-divider {
+  height: 1px;
+  background-color: #21262d;
+  margin-bottom: 14px;
+}
+
+/* ─── Price Row ─────────────────────────────────────── */
+.ls-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ls-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.ls-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #3b82f6;
+  white-space: nowrap;
+}
+
+.ls-price--highlight {
+  font-size: 18px;
+  color: #3b82f6;
+}
+
+.ls-price-label {
+  font-size: 13px;
+  color: #8b949e;
+  white-space: nowrap;
+}
+
+/* ─── CTA Buttons ───────────────────────────────────── */
+.ls-cta {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ls-cta:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+.ls-cta--secondary,
+.ls-cta--primary {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* ─── Bottom Navigation ─────────────────────────────── */
+.ls-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #161b22;
+  border-top: 1px solid #21262d;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0 16px;
+  z-index: 100;
+}
+
+.ls-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 20px;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+  min-width: 60px;
+}
+
+.ls-nav-item:hover {
+  opacity: 0.75;
+}
+
+.ls-nav-icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(0.55);
+  transition: filter 0.2s ease;
+}
+
+.ls-nav-icon--active {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(80%) saturate(500%)
+    hue-rotate(195deg) brightness(100%);
+}
+
+.ls-nav-label {
+  font-size: 11px;
+  color: #8b949e;
+  font-weight: 500;
+}
+
+.ls-nav-label--active {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 2px;
+}
+
+/* ─── Responsive ────────────────────────────────────── */
+
+/* Tablet and above — still single column, just wider card image */
+@media (min-width: 640px) {
+  .ls-hero-section {
+    padding: 28px 24px 16px;
+  }
+
+  .ls-hero-title {
+    font-size: 28px;
+  }
+
+  .ls-card-list {
+    padding: 16px 24px 0;
+  }
+
+  .ls-card-image-wrap {
+    height: 220px;
+  }
+}
+
+/* Desktop — still single column, centered with max width */
+@media (min-width: 960px) {
+  .ls-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ls-hero-section {
+    padding: 36px 24px 20px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+
+  .ls-card-list {
+    padding: 16px 24px 0;
+    gap: 20px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+
+  .ls-card-image-wrap {
+    height: 280px;
+  }
+
+  .ls-hero-title {
+    font-size: 30px;
+  }
+
+  .ls-hero-subtitle {
+    font-size: 15px;
+  }
+}
