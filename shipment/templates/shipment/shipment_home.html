@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Shipment Management</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 40px;
+      }
+
+      input,
+      button {
+        padding: 8px;
+        margin: 5px;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>🚚 Shipment Management</h2>
+
+    <h3>Create Shipment</h3>
+
+    <input type="text" id="tracking" placeholder="Tracking Number" />
+    <input type="text" id="customer" placeholder="Customer Name" />
+    <button onclick="createShipment()">Create</button>
+
+    <h3>All Shipments</h3>
+    <button onclick="loadShipments()">Load Shipments</button>
+
+    <table id="shipmentTable">
+      <thead>
+        <tr>
+          <th>Tracking</th>
+          <th>Customer</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      function createShipment() {
+        fetch("/api/shipments/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            tracking_number: document.getElementById("tracking").value,
+            customer_name: document.getElementById("customer").value,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert("Shipment Created!");
+            loadShipments();
+          });
+      }
+
+      function loadShipments() {
+        fetch("/api/shipments/")
+          .then((response) => response.json())
+          .then((data) => {
+            let tableBody = document.querySelector("#shipmentTable tbody");
+            tableBody.innerHTML = "";
+
+            data.forEach((shipment) => {
+              let row = `
+                <tr>
+                    <td>${shipment.tracking_number}</td>
+                    <td>${shipment.customer_name}</td>
+                    <td>${shipment.status}</td>
+                </tr>
+            `;
+              tableBody.innerHTML += row;
+            });
+          });
+      }
+    </script>
+  </body>
+</html>
